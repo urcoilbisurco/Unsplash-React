@@ -15,9 +15,9 @@ class SearchBar extends Component{
   }
   render(){
     return (
-      <div>
-        <input onKeyUp={this.handleKey.bind(this)} type="text"/>
-        <button onClick={this.onSearch.bind(this)}>Search</button>
+      <div className="searchbar">
+        <input className="searchbar-input" onKeyUp={this.handleKey.bind(this)} type="text"/>
+        <div className="searchbar-button" onClick={this.onSearch.bind(this)}>Search</div>
       </div>
     )
   }
