@@ -18,18 +18,18 @@ class Unsplash extends Component{
       index:1
     }
   }
+  componentDidMount(){
+    this.onSearch("home");
+  }
   onSearch(word){
     console.log("SEARCH", word)
     //this.setState(this.defaultState())
     this.setState({loading:true, word:word})
-    setTimeout(()=>{
-      this.loadPhotos()//unsplash.photos.searchPhotos(word, undefined, this.state.index, 2).then(res => {return res.json()})
-      .then(photos=>{
-        console.log(photos)
-        this.setState({loading:false, photos:photos})
-      })
-    },100)
-
+    this.loadPhotos()//unsplash.photos.searchPhotos(word, undefined, this.state.index, 2).then(res => {return res.json()})
+    .then(photos=>{
+      console.log(photos)
+      this.setState({loading:false, photos:photos})
+    })
   }
   loadPhotos(){
     console.log(this.state)
@@ -38,14 +38,11 @@ class Unsplash extends Component{
   }
   handleLoadMore(){
     this.setState({index:this.state.index+1});
-    setTimeout(()=>{
-      this.loadPhotos()
-      .then(photos=>{
-        console.log(photos)
-        this.setState({photos:this.state.photos.concat(photos)})
-      })
+    this.loadPhotos()
+    .then(photos=>{
+      console.log(photos)
+      this.setState({photos:this.state.photos.concat(photos)})
     })
-
   }
   render(){
     return(

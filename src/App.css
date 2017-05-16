@@ -52,9 +52,16 @@
   height:150px;
   margin-right:8px;
 }
+.photosgrid-image img{
+  height:100%;
+}
+.photosgrid-image.selected{
+  border:8px solid #3f51b5;
+}
 .photosgrid-loadmore{
   height:150px;
-  width:240px;
+  min-width:120px;
+  text-align: center;
   display:flex;
   align-items: center;
   justify-content: center;
