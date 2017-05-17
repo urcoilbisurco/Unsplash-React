@@ -44,12 +44,18 @@ class Unsplash extends Component{
       this.setState({photos:this.state.photos.concat(photos)})
     })
   }
+  handleSelection(photo){
+    console.log("photo selected:", photo)
+  }
+  getSelection(){
+    this.photos_grid.getSelection()
+  }
   render(){
     return(
       <div className="App">
         <SearchBar onSearch={this.onSearch.bind(this)}/>
         {this.state.loading && <Loading/>}
-        {!this.state.loading && <PhotosGrid loadMore={this.handleLoadMore.bind(this)} photos={this.state.photos} />}
+        {!this.state.loading && <PhotosGrid ref={(ref)=> {this.photos_grid=ref;} } onSelect={this.handleSelection.bind(this)} loadMore={this.handleLoadMore.bind(this)} photos={this.state.photos} />}
       </div>
     )
   }

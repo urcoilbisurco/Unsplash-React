@@ -4,7 +4,7 @@ function Photo(props){
   let selected=props.selected ? "selected" : ""
   return (
     <div className={"photosgrid-image "+ selected} onClick={()=>{console.log("ok");props.onSelect({id:props.id, url:props.urls.small})} }>
-      <img src={props.urls.small} alt=""/>    
+      <img src={props.urls.small} alt=""/>
     </div>
   )
 }
@@ -26,11 +26,15 @@ class PhotosGrid extends Component{
   handleSelect(photo){
     console.log(photo);
     let i=this.state.choosed.indexOf(photo)
+    this.props.onSelect(photo)
     if(i<0){
       this.setState({choosed: this.state.choosed.concat(photo)})
     }else{
       this.setState({choosed: this.state.choosed.slice(0,i).concat(this.state.choosed.slice(i+1))})
     }
+  }
+  getSelection(){
+    return this.state.choosed;
   }
   render(){
     console.log("CHOOSED", this.state.choosed)

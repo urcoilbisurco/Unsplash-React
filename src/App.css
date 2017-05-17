@@ -61,6 +61,7 @@
 .photosgrid-loadmore{
   height:150px;
   min-width:120px;
+  cursor:pointer;
   text-align: center;
   display:flex;
   align-items: center;
