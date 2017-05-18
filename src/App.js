@@ -55,11 +55,11 @@ class Unsplash extends Component{
       <div className="App">
         <SearchBar onSearch={this.onSearch.bind(this)}/>
         {this.state.loading && <Loading/>}
-        {!this.state.loading && <PhotosGrid ref={(ref)=> {this.photos_grid=ref;} } onSelect={this.handleSelection.bind(this)} loadMore={this.handleLoadMore.bind(this)} photos={this.state.photos} />}
+        {!this.state.loading && <PhotosGrid single={this.props.single} ref={(ref)=> {this.photos_grid=ref;} } onSelect={this.handleSelection.bind(this)} loadMore={this.handleLoadMore.bind(this)} photos={this.state.photos} />}
       </div>
     )
   }
 }
-
+Unsplash.defaultProps = {multiple: false};
 
 export default Unsplash;

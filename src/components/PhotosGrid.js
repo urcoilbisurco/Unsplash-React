@@ -25,12 +25,18 @@ class PhotosGrid extends Component{
   }
   handleSelect(photo){
     console.log(photo);
-    let i=this.state.choosed.indexOf(photo)
-    this.props.onSelect(photo)
-    if(i<0){
+    let exists=this.state.choosed.find((p)=>p.id===photo.id)
+    if(!exists){
       this.setState({choosed: this.state.choosed.concat(photo)})
+      this.props.onSelect(photo)
     }else{
-      this.setState({choosed: this.state.choosed.slice(0,i).concat(this.state.choosed.slice(i+1))})
+      let s=this.state.choosed.reduce((all, p)=>{
+        if(p.id!==photo.id){
+          all.push(p)
+        }
+        return all;
+      }, [])
+      this.setState({choosed: s})
     }
   }
   getSelection(){
